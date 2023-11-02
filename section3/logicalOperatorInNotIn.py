@@ -33,3 +33,7 @@ print(name[1])  # IT WILL RETURN O
 print(name[-3])  # IT WILL RETURN O
 
 print(name not in group_b)
+
+test_0 = 1 or 0
+test_1 = 0 or 1
+print(test_0, test_1)
