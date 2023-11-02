@@ -25,3 +25,5 @@ print(phrase[6::2])  # Will only print 'W r d' from 'World!'
 
 # It is possible to reverse phrase using pass -1
 print(phrase[-12::1])
+
+print(phrase[-len(phrase)::1])
