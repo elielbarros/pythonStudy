@@ -3,8 +3,6 @@ Logical Operator 'AND'
 
 With 'AND' all operations need to be True to return True
 If one operation come False then the result will be False
-
-With 'OR' if one condition is True then the expression will return True already
 """
 condition_true = True
 condition_false = False
