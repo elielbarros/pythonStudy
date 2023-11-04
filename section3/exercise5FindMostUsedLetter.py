@@ -20,3 +20,8 @@ while index < len(alphabet):
     index += 1
 
 print(char_repeated_most, ':', qtt_char_repeated_most)
+
+"""
+Today i learned about '.count' method.
+With '.count' method it is possible to count how many times a letter was repeated on a phrase.
+"""
