@@ -28,12 +28,10 @@ while True:
             print('You must provide a valid operator: + - * /')
             continue
     else:
+        count = 0
         print('Exiting', end='')
-        time.sleep(0.5)
-        print('.', end='')
-        time.sleep(0.5)
-        print('.', end='')
-        time.sleep(0.5)
-        print('.', end='')
-        time.sleep(0.5)
+        while count < 3:
+            time.sleep(0.5)
+            print('.', end='')
+            count += 1
         break
