@@ -1,5 +1,7 @@
 import time
 
+operator_group = '+-*/'
+
 while True:
     exit_str = input('Press E to exit ')
     exit_str = exit_str.lower()
@@ -25,7 +27,10 @@ while True:
         elif operator == '/':
             print(f'{numberA} {operator} {numberB} = {numberA / numberB}')
         else:
-            print('You must provide a valid operator: + - * /')
+            if operator not in operator_group:
+                print('You must provide a valid operator: + - * /')
+            elif len(operator):
+                print('You must provide only one operator')
             continue
     else:
         count = 0
