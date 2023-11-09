@@ -1,7 +1,6 @@
 import time
 
 shopping_list = []
-available_options = 'idl'
 while True:
     print('Select an option ')
     chosen_option = input('[i]nsert [d]elete [l]ist: ')
@@ -9,7 +8,6 @@ while True:
     if chosen_option == 'i':
         item_name = input('Write the item name you want to buy: ')
         shopping_list.append(item_name)
-        continue
     elif chosen_option == 'd':
         if not shopping_list:
             print('Shopping list is empty')
@@ -17,10 +15,13 @@ while True:
         chosen_item_index = input('Choose the item index to delete: ')
         try:
             chosen_item_index = int(chosen_item_index)
-        except:
+            del shopping_list[chosen_item_index]
+        except ValueError:
             print('You have to choose an index to delete!')
-
-        del shopping_list[chosen_item_index]
+        except IndexError:
+            print('You have to choose a valid index to delete!')
+        except:
+            print('Unknown Error!')
     elif chosen_option == 'l':
         if not shopping_list:
             print('Shopping list is empty')
@@ -29,7 +30,7 @@ while True:
         for index, item in enumerate(shopping_list):
             print(index, item)
     else:
-        print('Select a valid option')
+        print('Select a valid option', end='')
         count = 0
         while count < 3:
             time.sleep(0.5)
