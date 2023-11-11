@@ -3,9 +3,19 @@ Search for: 'Algoritmo de Validação do CPF'
 
 CPF: 746.824.890-70
 """
+import re
 
 cpf_replaced = '746.824.890-70'.replace('.', '').replace('-', '')
 print(cpf_replaced)
+
+# Regex will get everything that is not a number between 0 and 9 and replace for nothing
+cpf_regex = re.sub(
+        r'[^0-9]',
+        '',
+        '746.824.890-70'
+)
+print(cpf_regex)
+
 cpf = '746.824.890-70'
 substring_cpf = cpf[:11]
 numbers_to_multiply = 10
