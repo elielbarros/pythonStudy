@@ -6,6 +6,7 @@ CPF: 746.824.890-70
 
 cpf = '746.824.890-70'
 split_cpf = cpf.split('-')
+substring_cpf = cpf[:11]
 numbers_to_multiply = 10
 sum_ = 0
 for digit in split_cpf[0]:
