@@ -4,6 +4,8 @@ Search for: 'Algoritmo de Validação do CPF'
 CPF: 746.824.890-70
 """
 
+cpf_replaced = '746.824.890-70'.replace('.', '').replace('-', '')
+print(cpf_replaced)
 cpf = '746.824.890-70'
 substring_cpf = cpf[:11]
 numbers_to_multiply = 10
@@ -21,7 +23,7 @@ for digit in substring_cpf:
         # print(e)
         continue
 
-first_number = sum_ * 10 % 11
+first_number = (sum_ * 10) % 11
 if first_number > 9:
     print(0)
 else:
@@ -43,7 +45,7 @@ for digit in substring_cpf:
         # print(e)
         continue
 
-second_number = sum_ * 10 % 11
+second_number = (sum_ * 10) % 11
 if first_number > 9:
     print(0)
 else:
