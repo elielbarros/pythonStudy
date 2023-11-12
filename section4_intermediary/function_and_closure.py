@@ -16,10 +16,12 @@ def multiplier(n):
 # Creating Functions using Closure
 double = multiplier(2)
 triple = multiplier(3)
+quadrature = multiplier(4)
 
 # Calling Functions
 print(double(5))  # Output: 10
 print(triple(5))  # Output: 15
+print(quadrature(2))  # Output: 8
 
 for number in [1, 2, 3, 4, 5]:
     print(f'{double(number)=}')
