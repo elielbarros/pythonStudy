@@ -22,7 +22,7 @@ sum_(b=2, a=1)
 # Also it is important to understand that, if we pass a Named Argument we can't pass after this Named Argument
 # one Not Named Argument. If we pass Positional Argument after Named Argument, python will raise an error
 # Error: SyntaxError: positional argument follows keyword argument
-sum_(b=2, 1)
+# sum_(b=2, 1)
 
 
 # But it is possible to send a Named Argument after a Positional Argument
