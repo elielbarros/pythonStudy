@@ -16,7 +16,7 @@ def make_print():
     # When define the global scope value here, it will be another variable different from the global that is outside
     global_scope_value = 2
     print(f'{global_scope_value=}')  # Global scope could be used inside function
-    # It is possible to define global_scope_value as Global and change the value outside too
+    # It is possible to define global_scope_value as Global and change the value from global scope defined before
     global global_scope_value_1
     global_scope_value_1 = 13
     print(f'{global_scope_value_1=}')
