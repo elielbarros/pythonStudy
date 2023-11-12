@@ -6,7 +6,7 @@ args - Not Named Arguments
 
 
 def sum_(*args):
-    # args is a Tuple
+    # args is a Tuple and is PACKING all the elements, (1, 2, 3, 4, 5), sent by 'sum_' method
     print(args, type(args))
     accumulator = 0
     # We can iterate over Tuple
