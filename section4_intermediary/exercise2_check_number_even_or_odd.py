@@ -10,5 +10,5 @@ def even_or_odd(*args):
 
 
 result = even_or_odd(1, 2, 3, 4, 5, 6)
-for element in result:
-    print(element)
+for element_ in result:
+    print(element_)
