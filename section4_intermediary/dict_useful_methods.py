@@ -129,9 +129,9 @@ print(update_)  # output: {'a': 1, 'b': 2, 'c': '3', 'd': '4'}
 # It is also possible to update dict with iterable
 # Tuple example
 tuple_ = ('e', 5), ('f', 6)
-update_.update(tuple_)
+update_.update(tuple_)  # output: {'a': 1, 'b': 2, 'c': '3', 'd': '4', 'e': 5, 'f': 6}
 print(update_)
 # List Example
 list_ = [['g', 7],['h', 8]]
-update_.update(list_)
+update_.update(list_)  # output: {'a': 1, 'b': 2, 'c': '3', 'd': '4', 'e': 5, 'f': 6, 'g': 7, 'h': 8}
 print(update_)
