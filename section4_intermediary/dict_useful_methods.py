@@ -11,7 +11,10 @@ get - get value from key
 pop - delete an item with specific key (del)
 popitem - Delete last item added
 update - update dict with another
+deep copy - will copy everything from dict_a to dict_b as a new dict.
 """
+
+import copy
 
 person = {
     'name': 'John',
@@ -54,3 +57,44 @@ person = {
 
 person.setdefault('age', '0')
 print(f'{person.get("age")=}')
+
+# It is possible to copy a dict into another dict pointing dict_2 to dict_1
+dict_1 = {
+    'c1': 1
+}
+
+dict_2 = dict_1
+print(dict_2)  # output: {'c1': 1}
+
+# But if change dict_2, then dict_1 will be changed too
+dict_2['c1'] = 100
+print(dict_1)  # output: {'c1': 100}
+
+# So we can make a 'Shallow Copy'.
+# 'Shallow Copy' will definitely copy immutable values.
+# But mutable values will be pointed as before when we pointed dict_2 to dict_1.
+dict_1 = {
+    'c1': 1,
+    'l1': [1, 2, 3]
+}
+dict_2 = dict_1.copy()
+dict_2['c1'] = 100
+print(dict_2)  # output: {'c1': 100, 'l1': [1, 2, 3]}
+dict_2['l1'][0] = 100
+print(dict_1)  # output: {'c1': 1, 'l1': [100, 2, 3]}
+
+# It is possible to make a 'Shallow Copy' with library copy
+dict_2 = copy.copy(dict_1)
+print(dict_2)  # output: {'c1': 1, 'l1': [100, 2, 3]}
+
+# It is possible to make a 'Deep Copy' with library copy
+# 'Deep Copy' will copy all information from dict_a to dict_b as a new dict in memory.
+dict_a = {
+    'a': 1,
+    'la': [1, 2, 3]
+}
+dict_b = copy.deepcopy(dict_a)
+dict_b['a'] = 100
+dict_b['la'][1] = 100
+print(dict_a)  # output: {'a': 1, 'la': [1, 2, 3]}
+print(dict_b)  # output: {'a': 100, 'la': [1, 100, 3]}
