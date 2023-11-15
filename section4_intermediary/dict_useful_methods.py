@@ -117,4 +117,21 @@ print(pop_)  # {}
 update_ = {
     'a': 1
 }
+print(update_)  # output: {'a': 1}
+# Using method update() to update the variable update_
+update_.update({
+    'b': 2
+})
+print(update_)  # output: {'a': 1, 'b': 2}
+# It is also possible to update dict with named arguments
+update_.update(c='3', d='4')
+print(update_)  # output: {'a': 1, 'b': 2, 'c': '3', 'd': '4'}
+# It is also possible to update dict with iterable
+# Tuple example
+tuple_ = ('e', 5), ('f', 6)
+update_.update(tuple_)
+print(update_)
+# List Example
+list_ = [['g', 7],['h', 8]]
+update_.update(list_)
 print(update_)
