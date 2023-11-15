@@ -98,3 +98,17 @@ dict_b['a'] = 100
 dict_b['la'][1] = 100
 print(dict_a)  # output: {'a': 1, 'la': [1, 2, 3]}
 print(dict_b)  # output: {'a': 100, 'la': [1, 100, 3]}
+
+# It is possible to pop an item from dict
+pop_ = {
+    'a': 1,
+    'b': 2
+}
+print(pop_)  # output: {'a': 1, 'b': 2}
+pop_a = pop_.pop('a')
+print(pop_a)  # output: 1
+print(pop_)  # output: {'b': 2}
+pop_item = pop_.popitem()
+print(pop_item)  # output: ('b', 2)
+print(pop_)  # {}
+
