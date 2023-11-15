@@ -112,3 +112,9 @@ pop_item = pop_.popitem()
 print(pop_item)  # output: ('b', 2)
 print(pop_)  # {}
 
+
+# It is also possible to update a dict with method update()
+update_ = {
+    'a': 1
+}
+print(update_)
