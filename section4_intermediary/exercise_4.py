@@ -24,7 +24,6 @@ def get_number_best_case(list_):
         return previous_best_case
 
 
-
 def get_best_case(left_value, left, next_, array_):
     list_ = []
     while next_ < len(array_):
@@ -64,8 +63,6 @@ def print_best_case(array_):
             if element['difference'] < previous['difference']:
                 previous = element
         print(previous)
-
-
 
 
 for row_number, array_ in enumerate(value_headquarters):
