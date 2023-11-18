@@ -22,3 +22,5 @@ tuple_b = ("John", "Mary", "David")
 list_b = list(tuple_b)
 print(list_b, type(list_b))
 
+tuple_ = ()
+print(type(tuple_))  # output: <class 'tuple'>
