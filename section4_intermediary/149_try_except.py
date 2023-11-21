@@ -1,4 +1,5 @@
 """
+DOCUMENTATION: https://docs.python.org/pt-br/3/library/exceptions.html#built-in-exceptions
 Try - Try to execute a code
 
 Except - Catch except raised by try block
