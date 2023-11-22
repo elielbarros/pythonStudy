@@ -19,6 +19,6 @@ new_products = [
     for product in products
     if product['price'] < 20
 ]
-print(*new_products, sep='\n') # output: {'name': 'product2', 'price': 10}
+print(*new_products, sep='\n')  # output: {'name': 'product2', 'price': 10}
 
 
