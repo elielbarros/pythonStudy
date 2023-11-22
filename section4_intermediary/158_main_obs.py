@@ -9,7 +9,7 @@ Because what __main__ from module_b could access is different from what __main__
 
 # So if we have module_b and module_c and module_b is importing module_c
 # When we try to import module_b, we will have an exception
-import class_157_package.class_158_module_b as module_b
+import section4_intermediary.class_159_package.class_158_module_b as module_b
 
 module_b.subtract_(2, 1)  # output: ModuleNotFoundError: No module named 'class_158_module_c'
 

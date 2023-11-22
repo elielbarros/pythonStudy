@@ -7,11 +7,10 @@
 # print(class_157_package.class_157_module_example.sum_(1, 3))  # output: 4
 
 # Another way to import module from package:
-from class_157_package import class_157_module_example
+from section4_intermediary.class_159_package import class_157_module_example
 print(class_157_module_example.sum_(1, 3))  # output: 4
 
 # Another way is bad practice but also possible
-from class_157_package.class_157_module_example import *
 # We could also include __all__ to include all methods we want from module.
 # But to do that, we have to go on module and turn it explict.
 # So it will be possible to access variable but not possible to access the method sum_
