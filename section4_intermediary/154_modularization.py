@@ -13,7 +13,7 @@ Python knows all modules and patch that are present on the sys.path path
 """
 import sys
 
-import module_example_class_154
+import class_154_module_example
 
 # We cant import exercise0 because it is in another patch as module
 # import exercise0

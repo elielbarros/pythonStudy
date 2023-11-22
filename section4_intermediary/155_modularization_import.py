@@ -1,5 +1,5 @@
-import module_example_class_154
-from module_example_class_154 import sum_
+import class_154_module_example
+from class_154_module_example import sum_
 
 print(module_example_class_154.variable_module)
 
