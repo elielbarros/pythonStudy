@@ -13,7 +13,7 @@ def execute_function(function, x):
 
 
 sum_with_five = execute_function(sum_, 5)
-print(sum_with_five(5))
+print(sum_with_five(5))  # output: 10
 
 multiply_by_ten = execute_function(multiply, 10)
-print(multiply_by_ten(10))
+print(multiply_by_ten(10))  # output: 100
