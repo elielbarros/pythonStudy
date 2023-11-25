@@ -14,6 +14,7 @@ geralmente estende ou modifica o comportamento da função original.
 def create_func(function):
     def inner_function(*args, **kwargs):
         for arg in args:
+            print(arg)
             is_string(arg)
         result = function(*args, **kwargs)
         return result
