@@ -36,6 +36,12 @@ def sum_(a, b):
 ten_plus_five = sum_(10, 5)
 print(ten_plus_five)
 # output:
-# Decorated function
+# Decorated Function Factory
+# Function Factory
 # Inner function
+# Decorated Function Factory Arguments: 1 2 3
 # 15
+
+decorated_factory = decorated_function_factory(1, 2, 3)
+multiply_ = decorated_factory(lambda a, b: a * b)
+print(multiply_(10, 5))
