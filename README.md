@@ -1,7 +1,7 @@
 <p align="center"><img alt="Python" src="static/img/python-logo.png"></p>
 <h1 align="center"> Python Personal Study </h1>
 
-> Status do Projeto: Under development :warning:
+> Project Status: Under development :warning:
 
 ### Tópicos
 :small_blue_diamond: [Project description](#project-description)
