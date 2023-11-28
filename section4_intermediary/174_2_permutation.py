@@ -8,6 +8,7 @@ Permutation - itertools
 Ordem importa. Repete os agrupamentos por objeto.
 """
 from itertools import permutations
+
 people = [
     'Sydney', 'Safa', 'Saoirse', 'Byron'
 ]
