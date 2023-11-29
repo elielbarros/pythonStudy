@@ -24,6 +24,11 @@ new_products_comprehension_filter = [
 ]
 
 print(*new_products_comprehension_filter, sep='\n')
+# output:
+# {'name': 'Product 1', 'price': 22.32}
+# {'name': 'Product 3', 'price': 10.11}
+# {'name': 'Product 2', 'price': 105.87}
+# {'name': 'Product 4', 'price': 69.9}
 
 print()
 
@@ -32,6 +37,11 @@ new_products_filter = filter(
         products
 )
 print(*new_products_filter, sep='\n')
+# output:
+# {'name': 'Product 1', 'price': 22.32}
+# {'name': 'Product 3', 'price': 10.11}
+# {'name': 'Product 2', 'price': 105.87}
+# {'name': 'Product 4', 'price': 69.9}
 
 print()
 
@@ -46,3 +56,6 @@ new_products_filter_using_defined_method = filter(
 )
 
 print(*new_products_filter_using_defined_method, sep='\n')
+# output:
+# {'name': 'Product 2', 'price': 105.87}
+# {'name': 'Product 4', 'price': 69.9}

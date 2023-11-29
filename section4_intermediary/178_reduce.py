@@ -33,7 +33,7 @@ biggest_product_price = reduce(
         products[0]
 )
 
-print(biggest_product_price)
+print(biggest_product_price)  # output: {'name': 'Product 2', 'price': 105.87}
 
 print()
 
@@ -44,4 +44,4 @@ smallest_product_price = reduce(
         products[0]
 )
 
-print(smallest_product_price)
+print(smallest_product_price)  # output: {'name': 'Product 5', 'price': 10.0}
