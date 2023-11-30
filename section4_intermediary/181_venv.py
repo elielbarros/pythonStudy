@@ -7,8 +7,8 @@ when you need to ensure compatibility of specific library versions.
 
 The installation is inside the venv folder
 
-The external dependencies installed are also in the venv folder, however, there is a text file called
-requirements, which stores these dependencies and their respective version
+The external dependencies installed are also in the venv folder, however, there is a text file called requirements,
+which stores these dependencies and their respective version
 
 # Portuguese
 Ambiente Virtual
