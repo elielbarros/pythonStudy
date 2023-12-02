@@ -44,7 +44,3 @@ with open(file_path, 'w+') as file:
     # To do that we use seek, with position 0, 0 then the method read() will work fine.
     file.seek(0, 0)
     print(file.read())
-
-
-
-
