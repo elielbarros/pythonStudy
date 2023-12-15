@@ -9,6 +9,9 @@
 - Template Method Pattern
     Essa aula implementa parte do pattern Template Method.
 """
+from pathlib import Path
+
+LOG_FILE = Path(__file__).parent / 'log.txt'
 
 
 class Log:
@@ -29,6 +32,9 @@ class Log:
 class LogFileMixin(Log):
     def _log(self, message):
         print(message)
+        with open(LOG_FILE, 'a') as file:
+            file.write(f'{message}')
+            file.write('\n')
 
 
 class LogPrintMixin(Log):
@@ -40,3 +46,6 @@ if __name__ == '__main__':
     log_print = LogPrintMixin()
     log_print.log_error('Raising Error')
     log_print.log_success('Raising Success')
+
+    log_file = LogFileMixin()
+    log_file.log_success('Raising Success')
