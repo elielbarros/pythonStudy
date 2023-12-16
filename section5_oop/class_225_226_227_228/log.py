@@ -15,11 +15,11 @@ LOG_FILE = Path(__file__).parent / 'log.txt'
 
 
 class Log:
+    # This is an abstraction.
+    # When we use a method from superclass to use a protected method using Inheritance.
     def _log(self, message):
         raise NotImplementedError('Implement log method')
 
-    # This is an abstraction.
-    # When we use a method from superclass to use a protected method using Inheritance.
     def log_error(self, message):
         self._log(f'Error: {message}')
 
