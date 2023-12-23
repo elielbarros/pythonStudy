@@ -11,6 +11,16 @@ def add_repr(cls):
     return cls
 
 
+def show_planet(method):
+    def inner_function(self, *args, **kwargs):
+        result = method(self, *args, **kwargs)
+        if 'Earth' in result:
+            return 'You are in home.'
+        return result
+
+    return inner_function
+
+
 class MyReprMixin:
     def __repr__(self):
         class_name = self.__class__.__name__
@@ -28,6 +38,10 @@ class Planet:
     def __init__(self, name):
         self.name = name
 
+    @show_planet
+    def print_name(self):
+        return f'The planet is {self.name}'
+
 
 @add_repr
 class Car:
@@ -43,6 +57,7 @@ print(brazil)
 Planet = add_repr(Planet)
 earth = Planet('Earth')  # output: Planet({'name': 'Earth'})
 print(earth)
+print(earth.print_name())  # output: You are in home.
 
 # Using decorated function to implement repr
 creta = Car('Creta')  # output: Car({'name': 'Creta'})
