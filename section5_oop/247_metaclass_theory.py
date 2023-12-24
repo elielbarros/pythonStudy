@@ -1,6 +1,32 @@
 """
 # English
+Metaclasses are the type of classes
+IN PYTHON, EVERYTHING IS AN OBJECT (CLASSES TOO)
+So what is the type of a class? (type) TYPE is what generates the class
+- Your object is an instance of your class
+- Your class is an instance of type (type is a metaclass)
+type('class_name', (Inheritances,), __dict__)
 
+When creating a class, things happen by default in this order:
+NOTE: The __new__ of the class creates and returns a new instance, the __new__ of the metaclass creates and returns CLASS
+1. Metaclass's __new__ is called and creates the new class
+2. __call__ of the metaclass is called with the arguments and calls:
+     A. __new__ of the class with the arguments (creates the instance)
+     B. __init__ of the class with the arguments
+3. metaclass __call__ ends execution
+
+Important metaclass methods
+__new__(mcs, name, bases, dict) (Creates the class)
+__call__(cls, *args, **kwargs) (Creates and initializes the instance)
+
+"Metaclasses are deeper spells than 99% of users should care about. If you want to know if you need
+they don't need them (people who really need them know for sure that they need them and don't need
+an explanation as to why).”
+— Tim Peters (CPython Core Developer)
+
+object above
+classFoo:
+     ...
 
 # Portuguese
 Metaclasses são o tipo das classes
