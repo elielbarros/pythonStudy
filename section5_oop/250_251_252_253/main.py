@@ -1,3 +1,4 @@
+import many_lines
 import one_line
 
 # Using 'dir' it is possible to see everything that is inside one_line
@@ -14,5 +15,8 @@ print(one_line.__file__)  # output: /home/eliel/Documents/projects/pythonStudy/s
 # It is possible to print the module name
 print(one_line.__name__)  # output: one_line
 
-# Using help it is possible to see what is inside the module one_line
+# Using the method 'help' it is possible to see what is inside the module one_line
 help(one_line)
+
+# This is a docstring with many lines
+help(many_lines)
