@@ -1,3 +1,4 @@
+import function_documentation
 import many_lines
 import one_line
 
@@ -20,3 +21,10 @@ help(one_line)
 
 # This is a docstring with many lines
 help(many_lines)
+
+# This is a docstring with function documentation
+help(function_documentation)
+
+function_documentation.sum_(1, 2)
+
+function_documentation.sum__(1, 2)
