@@ -1,3 +1,4 @@
+import class_documentation
 import function_documentation
 import many_lines
 import one_line
@@ -28,3 +29,9 @@ help(function_documentation)
 function_documentation.sum_(1, 2)
 
 function_documentation.sum__(1, 2)
+
+# This is a docstring with class documentation
+help(class_documentation)
+
+f = class_documentation.Foo()
+f.bar()
