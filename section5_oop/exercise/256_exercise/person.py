@@ -18,3 +18,8 @@ class Person:
     @age.setter
     def age(self, age: int):
         self._age = age
+
+    def __repr__(self):
+        class_name = type(self).__name__
+        attributes = f'({self.name!r}, {self.age!r})'
+        return f'{class_name}{attributes}'

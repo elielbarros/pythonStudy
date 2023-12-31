@@ -3,7 +3,7 @@ from account import Account
 
 
 class Customer(Person):
-    def __init__(self, name, age):
+    def __init__(self, name: str, age: int):
         super().__init__(name, age)
         self.account = None
 
