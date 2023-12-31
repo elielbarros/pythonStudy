@@ -1,5 +1,5 @@
 class Person:
-    def __init__(self, name, age):
+    def __init__(self, name: str, age: int):
         self.name = name
         self.age = age
 
@@ -8,7 +8,7 @@ class Person:
         return self._name
 
     @name.setter
-    def name(self, name):
+    def name(self, name: str):
         self._name = name
 
     @property
@@ -16,5 +16,5 @@ class Person:
         return self._age
 
     @age.setter
-    def age(self, age):
+    def age(self, age: int):
         self._age = age
