@@ -5,8 +5,8 @@ from customer import Customer
 
 class Bank:
     def __init__(self):
-        self.customers = []
-        self.accounts = []
+        self.customers: list[int] | None = []
+        self.accounts: list[Account] | None = []
 
     def insert_customer(self, customer: Customer):
         self.customers.append(customer)
