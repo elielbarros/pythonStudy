@@ -7,6 +7,7 @@ class Bank:
     def __init__(self):
         self.customers: list[int] | None = []
         self.accounts: list[Account] | None = []
+        print('test')
 
     def insert_customer(self, customer: Customer):
         self.customers.append(customer)
