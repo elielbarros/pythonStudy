@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class Account(ABC):
-    def __init__(self, agency, account_number, balance):
+    def __init__(self, agency, account_number, balance=0):
         self.agency = agency
         self.account_number = account_number
         self.balance = balance
