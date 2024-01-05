@@ -1,5 +1,13 @@
 """
 # English
+frozen=True
+  - It will make the class attributes read-only.
+
+repr=False
+  - It will disable the repr method
+
+order=True
+  - It will automatically create the conditional to order the class, when sort() is executed
 
 # Portguese
 frozen=True
