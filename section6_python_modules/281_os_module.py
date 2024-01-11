@@ -60,6 +60,7 @@ de arquivos, execução de comandos do sistema, entre outras. Algumas das princi
  - os.path.exists(path): Verifica se o caminho especificado existe.
  - os.path.isfile(path): Verifica se o caminho especificado é um arquivo.
  - os.path.isdir(path): Verifica se o caminho especificado é um diretório.
+ - os.path.split(path): Retorna duas String, uma com o caminho das pastas e outra com o nome do arquivo
 
 4. Execução de Comandos do Sistema:
  - os.system(command): Executa um comando no shell do sistema operacional.
