@@ -23,3 +23,12 @@ print(this_file_path.parent)  # output: /home/eliel/Documents/projects/pythonStu
 # Return Parent path from another Parent path
 print(this_file_path.parent.parent)  # output: /home/eliel/Documents/projects/pythonStudy
 
+# How concatenate directory to a path using __truediv__ from Python
+idea = this_file_path.parent / 'idea'
+print(idea)  # output: /home/eliel/Documents/projects/pythonStudy/section6_python_modules/idea
+print(idea / 'file_idea.txt')  # output: /home/eliel/Documents/projects/pythonStudy/section6_python_modules/idea/file_idea.txt
+
+
+
+
+
