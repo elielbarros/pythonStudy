@@ -36,4 +36,5 @@ text_file = Path.home() / 'Desktop' / 'text_file.txt'
 text_file.touch()
 print(text_file)  # output : /home/eliel/Desktop/text_file.txt
 
-
+# It is also possible to delete this file using unlink()
+text_file.unlink()
