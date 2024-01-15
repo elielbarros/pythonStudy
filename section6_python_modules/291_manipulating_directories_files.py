@@ -31,5 +31,9 @@ print(idea / 'file_idea.txt')  # output: /home/eliel/Documents/projects/pythonSt
 # It is possible to get System Home Path using Path.home()
 print(Path.home())  # output: /home/eliel
 
+# It is possible to create a text file using touch
+text_file = Path.home() / 'Desktop' / 'text_file.txt'
+text_file.touch()
+print(text_file)  # output : /home/eliel/Desktop/text_file.txt
 
 
