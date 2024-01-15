@@ -28,7 +28,8 @@ idea = this_file_path.parent / 'idea'
 print(idea)  # output: /home/eliel/Documents/projects/pythonStudy/section6_python_modules/idea
 print(idea / 'file_idea.txt')  # output: /home/eliel/Documents/projects/pythonStudy/section6_python_modules/idea/file_idea.txt
 
-
+# It is possible to get System Home Path using Path.home()
+print(Path.home())  # output: /home/eliel
 
 
 
