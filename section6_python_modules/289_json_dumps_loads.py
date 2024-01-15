@@ -1,3 +1,20 @@
+"""
+# English
+json.loads(string_json)
+  - Will convert json_string into a Python Object Dictionary
+
+json.dumps(Object)
+  - Will convert a Python class/entity into a string_json
+
+# Portuguese
+
+json.loads(string_json)
+  - Vai converter uma string no formato json em um objeto Python, dictionary
+
+json.dumps(Object)
+  - Vai converter uma entidade/classe Python em uma string no formato json.
+"""
+
 import json
 from pprint import pprint
 from typing import TypedDict
