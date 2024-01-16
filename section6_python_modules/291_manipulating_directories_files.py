@@ -62,5 +62,23 @@ print(another_text_file_path.read_text())
 
 another_text_file_path.unlink()
 
+# mkdir
+# Creating directory using mkdir Path.mkdir()
+# exist_ok=True indicate that if the directory is already there, it is okay.
+mkdir_path = Path.home() / 'Desktop' / 'mkdir_directory'
+mkdir_path.mkdir(exist_ok=True)
+
+sub_directory_mkdir = mkdir_path / 'sub_directory'
+sub_directory_mkdir.mkdir(exist_ok=True)
+
+text_file_sub_directory = sub_directory_mkdir / 'file_.txt'
+text_file_sub_directory.touch()
+text_file_sub_directory.write_text('Hello World from subdirectory')
+
+text_file_mkdir_directory = mkdir_path / 'file_mkdir.txt'
+text_file_mkdir_directory.touch()
+text_file_mkdir_directory.write_text('Hello world from mkdir directory')
+
+
 
 
