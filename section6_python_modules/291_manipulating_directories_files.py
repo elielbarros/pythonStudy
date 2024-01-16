@@ -36,5 +36,31 @@ text_file = Path.home() / 'Desktop' / 'text_file.txt'
 text_file.touch()
 print(text_file)  # output : /home/eliel/Desktop/text_file.txt
 
+# It is possible to write something inside a file created before
+# write_text will always delete what was inside the file before and write new changes
+text_file.write_text('Hello World')
+
 # It is also possible to delete this file using unlink()
 text_file.unlink()
+
+another_text_file_path = Path.home() / 'Desktop' / 'another_text_file.txt'
+
+another_text_file_path.touch()
+another_text_file_path.write_text('')
+
+# Writing more than one line inside file
+with another_text_file_path.open('a+') as file:
+    file.write('One line\n')
+    file.write('Another line\n')
+    file.write('Last line\n')
+
+print(another_text_file_path.read_text())
+# output:
+# One line
+# Another line
+# Last line
+
+another_text_file_path.unlink()
+
+
+
