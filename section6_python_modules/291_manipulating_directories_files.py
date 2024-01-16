@@ -3,6 +3,7 @@ Link: https://www.youtube.com/watch?v=T17BTNKBeJY&ab_channel=Ot%C3%A1vioMiranda
 """
 
 from pathlib import Path
+# from shutil import rmtree
 
 # Path() return actual directory that this file is inside
 project_path = Path()
@@ -79,6 +80,47 @@ text_file_mkdir_directory = mkdir_path / 'file_mkdir.txt'
 text_file_mkdir_directory.touch()
 text_file_mkdir_directory.write_text('Hello world from mkdir directory')
 
+# rmdir
+# It is not possible to delete a directory if the directory has something inside
+# mkdir_path.rmdir()  # output: Directory not empty: '/home/eliel/Desktop/mkdir_directory'
+
+files = mkdir_path / 'files'
+files.mkdir(exist_ok=True)
+
+for i in range(10):
+    file_ = files / f'file_{i}.txt'
+    if file_.is_file():
+        print('IS A FILE')
+
+    if file_.is_dir():
+        print('IS A DIRECTORY')
+
+    if file_.exists():
+        print('FILE EXISTS')
+        file_.unlink()
+    else:
+        file_.touch()
+
+    with file_.open('a+') as text_file:
+        text_file.write('Hello World\n')
+        text_file.write(f'file_{i}.text')
 
 
+def rmtree_(root: Path, remove_root=True):
+    for _file_ in root.glob('*'):
+        if _file_.is_dir():
+            print('DIR: ', _file_)
+            rmtree_(_file_, False)
+            _file_.rmdir()
+        else:
+            print('FILE: ', _file_)
+            _file_.unlink()
+    if remove_root:
+        root.rmdir()
 
+
+rmtree_(mkdir_path)
+
+# Shutil.rmtree()
+# Delete recursively all directories
+# rmtree(mkdir_path)
