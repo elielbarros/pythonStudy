@@ -32,4 +32,4 @@ with open(CSV_FILE_PATH, 'r') as file_:
     # .fieldnames
     print(csv_dict_reader.fieldnames)
     for raw_dict in csv_dict_reader:
-        print(raw_dict, type(raw_dict))
+        print(raw_dict)
