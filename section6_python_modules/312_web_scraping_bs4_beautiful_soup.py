@@ -10,6 +10,9 @@ in Python object format to make the developer's life easier.
 + Installation
 - pip install requests types-requests bs4
 
+Before execute this module execute the command:
+python -m http.server -d section6_python_modules/310_http_server/ 3000
+
 # Portuguese
 + Web Scraping com Python usando requests e bs4 BeautifulSoup
 - Web Scraping é o ato de "raspar a web" buscando informações de forma
@@ -20,6 +23,9 @@ em formato de objetos Python para facilitar a vida do desenvolvedor.
 - Doc: https://www.crummy.com/software/BeautifulSoup/bs4/doc.ptbr/
 + Instalação
 - pip install requests types-requests bs4
+
+Antes de executar este module execute o comando:
+python -m http.server -d section6_python_modules/310_http_server/ 3000
 """
 import requests
 from bs4 import BeautifulSoup
