@@ -4,6 +4,9 @@ from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 # Chrome Options
 # https://peter.sh/experiments/chromium-command-line-switches/
@@ -36,6 +39,7 @@ def make_chrome_browser(*options: str) -> webdriver.Chrome:
 
 
 if __name__ == '__main__':
+    TIME_TO_WAIT = 10
     # Example
     # options = '--headless', '--disable-gpu',
     options = ()
@@ -44,5 +48,21 @@ if __name__ == '__main__':
     # Como antes
     browser.get('https://www.google.com')
 
+    # Esperar pelo textarea
+    search_input = WebDriverWait(browser, TIME_TO_WAIT).until(
+            EC.presence_of_element_located(
+                    (By.ID, 'APjFqb')
+            )
+    )
+
+    try:
+        search_input.send_keys('Hello World')
+        search_input.submit()
+    except Exception as e:
+        print(e)
+
+
     # Dorme por 10 segundos
-    sleep(10)
+    sleep(TIME_TO_WAIT)
+
+
