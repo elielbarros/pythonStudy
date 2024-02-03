@@ -1,7 +1,23 @@
 """
 # English
+How to capture a page and write it to a new file?
+     1. Create an instance of the PdfWriter() class
+         - writer = PdfWriter()
+     2. Add the page to the instance
+         - writer.add_page(page)
+     3. Use the contextManager
+         - with open(caminho_onde_o_arquivo_ficara, 'wb') as file:
+         - writer.write(file)
 
 # Portuguese
+Como capturar uma pagina e escrever ela em um arquivo novo?
+    1. Criar uma instancia da classe PdfWriter()
+        - writer = PdfWriter()
+    2. Adicionar a pagina a instancia
+        - writer.add_page(page)
+    3. Usar o contextManager
+        - with open(caminho_onde_o_arquivo_ficara, 'wb') as file:
+        - writer.write(file)
 """
 
 from pathlib import Path
