@@ -6,10 +6,12 @@ from openpyxl.worksheet.worksheet import Worksheet
 ROOT_PATH = Path(__file__).parent
 STATIC_PATH = ROOT_PATH / 'static'
 DESTINATION_PATH = STATIC_PATH / 'dest'
-WORKBOOK_PATH = STATIC_PATH / 'workbook.xlsx'
 WORKBOOK_FOR_PATH = STATIC_PATH / 'workbook_FOR.xlsx'
 
 workbook = Workbook()
+
+# List sheet names
+print(workbook.sheetnames)  # output: ['Sheet']
 
 # It is important to import Worksheet to see the list of methods available for a Worksheet instance.
 # Worksheet will be the table that starts with an Excel.
@@ -35,16 +37,3 @@ for i, student in enumerate(students, start=2):
         worksheet.cell(row=i, column=j, value=student_column)
 
 workbook.save(WORKBOOK_FOR_PATH)
-
-# Another way to create sheet using the method append()
-workbook = Workbook()
-worksheet: Worksheet = workbook.active
-
-worksheet.cell(row=1, column=1, value='Name')
-worksheet.cell(row=1, column=2, value='Age')
-worksheet.cell(row=1, column=3, value='Score')
-
-for student in students:
-    worksheet.append(student)
-
-workbook.save(WORKBOOK_PATH)
