@@ -43,8 +43,6 @@ layout.addWidget(button1, 1, 2, 1, 1)
 #       BUTTON3      #
 layout.addWidget(button2, 2, 1, 1, 2)
 
-
-
 # Showing central widget
 central_widget.show()
 
