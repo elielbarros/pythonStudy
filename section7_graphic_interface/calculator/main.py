@@ -7,6 +7,8 @@ from main_window import MainWindow
 from variables import WINDOW_ICON_PATH
 
 if __name__ == '__main__':
+
+    # Create application
     app = QApplication(sys.argv)
     window = MainWindow()
 
@@ -17,8 +19,8 @@ if __name__ == '__main__':
 
     label1 = QLabel('Hello World')
     label1.setStyleSheet('font-size: 50px;')
-    window.add_widget_to_vlayout(label1)
+    window.addWidgetToVLayout(label1)
 
-    window.adjust_fixed_size()
+    window.adjustFixedSize()
     window.show()
     app.exec()

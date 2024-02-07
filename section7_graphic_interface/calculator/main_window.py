@@ -6,17 +6,17 @@ class MainWindow(QMainWindow):
         super().__init__(parent, *args, **kwargs)
 
         # Configure Basic Layout
-        self.central_widget = QWidget()
-        self.vertical_layout = QVBoxLayout()
-        self.central_widget.setLayout(self.vertical_layout)
-        self.setCentralWidget(self.central_widget)
+        self.centralWidget = QWidget()
+        self.verticalLayout = QVBoxLayout()
+        self.centralWidget.setLayout(self.verticalLayout)
+        self.setCentralWidget(self.centralWidget)
 
         # Configure Window Title
         self.setWindowTitle('CALCULATOR')
 
-    def adjust_fixed_size(self):
+    def adjustFixedSize(self):
         self.adjustSize()
         self.setFixedSize(self.width(), self.height())
 
-    def add_widget_to_vlayout(self, widget: QWidget):
-        self.vertical_layout.addWidget(widget)
+    def addWidgetToVLayout(self, widget: QWidget):
+        self.verticalLayout.addWidget(widget)
