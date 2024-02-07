@@ -12,5 +12,6 @@ if __name__ == '__main__':
     label1.setStyleSheet('font-size: 50px;')
     window.vertical_layout.addWidget(label1)
 
+    window.adjust_fixed_size()
     window.show()
     app.exec()
