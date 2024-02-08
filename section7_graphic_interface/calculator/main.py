@@ -3,6 +3,7 @@ import sys
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication
 
+from buttons import Button
 from display import Display
 from main_window import MainWindow
 from styles import setupTheme
@@ -26,6 +27,10 @@ if __name__ == '__main__':
     # Create display
     display = Display()
     window.addWidgetToVLayout(display)
+
+    # Create button
+    button = Button('Inicial Text')
+    window.addWidgetToVLayout(button)
 
     window.adjustFixedSize()
     window.show()
