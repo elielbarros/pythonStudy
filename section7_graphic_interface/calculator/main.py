@@ -1,16 +1,21 @@
 import sys
 
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QApplication, QLabel
+from PySide6.QtWidgets import QApplication
 
 from display import Display
 from main_window import MainWindow
+from styles import setupTheme
 from variables import WINDOW_ICON_PATH
 
 if __name__ == '__main__':
 
     # Create application
     app = QApplication(sys.argv)
+
+    # Setup Theme
+    setupTheme()
+
     window = MainWindow()
 
     # Define Icon
@@ -21,10 +26,6 @@ if __name__ == '__main__':
     # Create display
     display = Display()
     window.addWidgetToVLayout(display)
-
-    label1 = QLabel('Hello World')
-    label1.setStyleSheet('font-size: 50px;')
-    window.addWidgetToVLayout(label1)
 
     window.adjustFixedSize()
     window.show()
