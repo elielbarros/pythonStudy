@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QPushButton
+from PySide6.QtWidgets import QPushButton, QGridLayout
 
 from variables import MEDIUM_FONT_SIZE
 
@@ -17,5 +17,17 @@ class Button(QPushButton):
         # font.setBold(True)
         self.setFont(font)
         self.setMinimumSize(45, 45)
-        # self.setProperty('cssClass', 'specialButton')
+        self.setProperty('cssClass', 'specialButton')
 
+
+class ButtonsGrid(QGridLayout):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self._grid_mask = [
+            ['C', '◀', '^', '/'],
+            ['7', '8', '9', '*'],
+            ['4', '5', '6', '-'],
+            ['1', '2', '3', '+'],
+            ['',  '0', '.', '=']
+        ]
