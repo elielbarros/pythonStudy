@@ -13,6 +13,12 @@ button1.setStyleSheet('font-size: 20px;')
 button2 = QPushButton('Button2')
 button2.setStyleSheet('font-size: 20px;')
 
+button3 = QPushButton('Button3')
+button3.setStyleSheet('font-size: 20px;')
+
+button4 = QPushButton('Button2')
+button4.setStyleSheet('font-size: 20px;')
+
 # Generic Widget
 # Receives a Layout
 # Cannot add a Widget
@@ -36,12 +42,15 @@ central_widget.setLayout(layout)
 # It is also possible to use a third button with two buttons in a horizontal WAY and the third button in a vertical WAY
 layout.addWidget(button, 1, 1, 1, 1)
 layout.addWidget(button1, 1, 2, 1, 1)
+layout.addWidget(button2, 1, 3, 1, 1)
 
 # The third parameter means that in a row the button is not expandable
 # The fourth parameter means that in columns the button is expandable covering any existence column
 # BUTTON1 # BUTTON 2 #
 #       BUTTON3      #
-layout.addWidget(button2, 2, 1, 1, 2)
+layout.addWidget(button3, 2, 1, 1, 2)
+
+layout.addWidget(button4, 2, 3, 1, 1)
 
 # Showing central widget
 central_widget.show()

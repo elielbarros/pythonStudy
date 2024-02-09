@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QPushButton, QGridLayout
 
+from utils import isNumOrDot
 from variables import MEDIUM_FONT_SIZE
 
 
@@ -17,17 +18,49 @@ class Button(QPushButton):
         # font.setBold(True)
         self.setFont(font)
         self.setMinimumSize(45, 45)
-        self.setProperty('cssClass', 'specialButton')
+        # self.setProperty('cssClass', 'specialButton')
 
 
 class ButtonsGrid(QGridLayout):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self._grid_mask = [
+        self._gridMask = [
             ['C', '◀', '^', '/'],
             ['7', '8', '9', '*'],
             ['4', '5', '6', '-'],
             ['1', '2', '3', '+'],
-            ['',  '0', '.', '=']
+            ['0', '.', '=']
         ]
+
+        self._makeGrid()
+
+    def _makeGrid(self):
+        for i, row in enumerate(self._gridMask):
+            for j, buttonText in enumerate(row):
+                if buttonText == '0':
+                    button = Button(buttonText)
+                    if not isNumOrDot(buttonText):
+                        button.setProperty('cssClass', 'specialButton')
+                    self.addWidget(button, i, j, 1, 2)
+
+                    j += 1
+                    nextButtonText = row[j]
+                    button = Button(nextButtonText)
+                    if not isNumOrDot(nextButtonText):
+                        button.setProperty('cssClass', 'specialButton')
+                    self.addWidget(button, i, 2, 1, 1)
+
+                    j += 1
+                    nextButtonText = row[j]
+                    button = Button(nextButtonText)
+                    if not isNumOrDot(nextButtonText):
+                        button.setProperty('cssClass', 'specialButton')
+                    self.addWidget(button, i, 3, 1, 1)
+                    break
+
+                button = Button(buttonText)
+
+                if not isNumOrDot(buttonText):
+                    button.setProperty('cssClass', 'specialButton')
+                self.addWidget(button, i, j)
