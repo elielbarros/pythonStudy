@@ -1,7 +1,10 @@
-from PySide6.QtWidgets import QPushButton, QGridLayout
 from PySide6.QtCore import Slot
+from PySide6.QtWidgets import QPushButton, QGridLayout
 
-from display import Display
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from display import Display
+    from info import Info
 from utils import isNumOrDot, isValidNumber
 from variables import MEDIUM_FONT_SIZE
 
@@ -26,7 +29,7 @@ class Button(QPushButton):
 
 
 class ButtonsGrid(QGridLayout):
-    def __init__(self, display: Display, *args, **kwargs):
+    def __init__(self, display: Display, info: Info, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self._gridMask = [
@@ -38,6 +41,7 @@ class ButtonsGrid(QGridLayout):
         ]
 
         self.display = display
+        self.info = info
         self._makeGrid()
 
     def _makeGrid(self):

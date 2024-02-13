@@ -8,6 +8,7 @@ from display import Display
 from main_window import MainWindow
 from styles import setupTheme
 from variables import WINDOW_ICON_PATH
+from info import Info
 
 if __name__ == '__main__':
 
@@ -24,12 +25,16 @@ if __name__ == '__main__':
     window.setWindowIcon(icon)
     app.setWindowIcon(icon)
 
+    # Create Info
+    info = Info('Calculation Result')
+    window.addToVLayout(info)
+
     # Create display
     display = Display()
     window.addToVLayout(display)
 
     # Create Grid
-    buttonsGrid = ButtonsGrid(display)
+    buttonsGrid = ButtonsGrid(display, info)
     window.verticalLayout.addLayout(buttonsGrid)
 
     window.adjustFixedSize()
