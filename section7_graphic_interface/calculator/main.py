@@ -20,6 +20,8 @@ if __name__ == '__main__':
 
     window = MainWindow()
 
+    print('test')
+
     # Define Icon
     icon = QIcon(str(WINDOW_ICON_PATH))
     window.setWindowIcon(icon)
