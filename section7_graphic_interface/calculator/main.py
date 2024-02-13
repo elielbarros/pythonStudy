@@ -26,7 +26,7 @@ if __name__ == '__main__':
     app.setWindowIcon(icon)
 
     # Create Info
-    info = Info('Calculation Result')
+    info = Info('')
     window.addToVLayout(info)
 
     # Create display

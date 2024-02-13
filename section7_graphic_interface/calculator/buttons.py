@@ -1,10 +1,11 @@
+from typing import TYPE_CHECKING
+
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QPushButton, QGridLayout
 
-from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from display import Display
     from info import Info
+    from display import Display
 from utils import isNumOrDot, isValidNumber
 from variables import MEDIUM_FONT_SIZE
 
@@ -29,7 +30,7 @@ class Button(QPushButton):
 
 
 class ButtonsGrid(QGridLayout):
-    def __init__(self, display: Display, info: Info, *args, **kwargs):
+    def __init__(self, display: 'Display', info: 'Info', *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._gridMask = [
             ['C', '◀', '^', '/'],
@@ -41,7 +42,17 @@ class ButtonsGrid(QGridLayout):
 
         self.display = display
         self.info = info
+        self._equation = ''
         self._makeGrid()
+
+    @property
+    def equation(self):
+        return self._equation
+
+    @equation.setter
+    def equation(self, value):
+        self._equation = value
+        self.info.setText(value)
 
     def _makeGrid(self):
         for i, row in enumerate(self._gridMask):
@@ -51,11 +62,8 @@ class ButtonsGrid(QGridLayout):
                     if not isNumOrDot(buttonText):
                         button.setProperty('cssClass', 'specialButton')
                     self.addWidget(button, i, j, 1, 2)
-                    buttonSlot = self._makeButtonDisplaySlot(
-                        self._insertButtonTextToDisplay,
-                        button,
-                    )
-                    button.clicked.connect(buttonSlot)
+                    buttonSlot = self._makeSlot(self._insertButtonTextToDisplay, button, )
+                    self._connectButtonClicked(button, buttonSlot)
 
                     j += 1
                     nextButtonText = row[j]
@@ -63,11 +71,8 @@ class ButtonsGrid(QGridLayout):
                     if not isNumOrDot(nextButtonText):
                         button.setProperty('cssClass', 'specialButton')
                     self.addWidget(button, i, 2, 1, 1)
-                    buttonSlot = self._makeButtonDisplaySlot(
-                        self._insertButtonTextToDisplay,
-                        button,
-                    )
-                    button.clicked.connect(buttonSlot)
+                    buttonSlot = self._makeSlot(self._insertButtonTextToDisplay, button, )
+                    self._connectButtonClicked(button, buttonSlot)
 
                     j += 1
                     nextButtonText = row[j]
@@ -75,11 +80,8 @@ class ButtonsGrid(QGridLayout):
                     if not isNumOrDot(nextButtonText):
                         button.setProperty('cssClass', 'specialButton')
                     self.addWidget(button, i, 3, 1, 1)
-                    buttonSlot = self._makeButtonDisplaySlot(
-                        self._insertButtonTextToDisplay,
-                        button,
-                    )
-                    button.clicked.connect(buttonSlot)
+                    buttonSlot = self._makeSlot(self._insertButtonTextToDisplay, button, )
+                    self._connectButtonClicked(button, buttonSlot)
 
                     break
 
@@ -87,23 +89,29 @@ class ButtonsGrid(QGridLayout):
 
                 if not isNumOrDot(buttonText):
                     button.setProperty('cssClass', 'specialButton')
+                    self._configSpecialButton(button)
 
                 self.addWidget(button, i, j)
-                buttonSlot = self._makeButtonDisplaySlot(
-                    self._insertButtonTextToDisplay,
-                    button,
-                )
-                button.clicked.connect(buttonSlot)
+                buttonSlot = self._makeSlot(self._insertButtonTextToDisplay, button, )
+                self._connectButtonClicked(button, buttonSlot)
 
-    def _makeButtonDisplaySlot(self, func, *args, **kwargs):
+    def _connectButtonClicked(self, button, slot):
+        button.clicked.connect(slot)
+
+    def _configSpecialButton(self, button):
+        text = button.text()
+
+        if text == 'C':
+            self._connectButtonClicked(button, self._clear)
+
+    def _makeSlot(self, func, *args, **kwargs):
         @Slot(bool)
-        def realSlot(checked):
-            func(checked, *args, **kwargs)
+        def realSlot():
+            func(*args, **kwargs)
 
         return realSlot
 
-    def _insertButtonTextToDisplay(self, checked, button):
-        print(checked)
+    def _insertButtonTextToDisplay(self, button):
         buttonText = button.text()
         displayText = self.display.text()
         newDisplayValue = displayText + buttonText
@@ -114,3 +122,6 @@ class ButtonsGrid(QGridLayout):
             return
 
         self.display.insert(button.text())
+
+    def _clear(self):
+        self.display.clear()
