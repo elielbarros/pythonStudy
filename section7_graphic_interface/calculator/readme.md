@@ -13,3 +13,4 @@
 ```pip install pyside6```
 <br>
 ```pip install pyqtdarktheme```
+<br>
