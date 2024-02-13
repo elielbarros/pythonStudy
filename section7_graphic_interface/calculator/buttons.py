@@ -31,7 +31,6 @@ class Button(QPushButton):
 class ButtonsGrid(QGridLayout):
     def __init__(self, display: Display, info: Info, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
         self._gridMask = [
             ['C', '◀', '^', '/'],
             ['7', '8', '9', '*'],
@@ -108,6 +107,8 @@ class ButtonsGrid(QGridLayout):
         buttonText = button.text()
         displayText = self.display.text()
         newDisplayValue = displayText + buttonText
+
+        print(newDisplayValue)
 
         if not isValidNumber(newDisplayValue):
             return
