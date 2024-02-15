@@ -12,11 +12,8 @@ def isEmpty(value: str):
 
 
 def isValidNumber(string: str):
-    valid = False
     try:
         float(string)
-        valid = True
+        return True
     except ValueError:
-        print('Failed to check number')
-
-    return valid
+        return False
