@@ -68,6 +68,7 @@ class ButtonsGrid(QGridLayout):
                     button = Button(buttonText)
                     if not isNumOrDot(buttonText):
                         button.setProperty('cssClass', 'specialButton')
+                        self._configSpecialButton(button)
                     self.addWidget(button, i, j, 1, 2)
                     buttonSlot = self._makeSlot(self._insertButtonTextToDisplay, button, )
                     self._connectButtonClicked(button, buttonSlot)
@@ -77,6 +78,7 @@ class ButtonsGrid(QGridLayout):
                     button = Button(nextButtonText)
                     if not isNumOrDot(nextButtonText):
                         button.setProperty('cssClass', 'specialButton')
+                        self._configSpecialButton(button)
                     self.addWidget(button, i, 2, 1, 1)
                     buttonSlot = self._makeSlot(self._insertButtonTextToDisplay, button, )
                     self._connectButtonClicked(button, buttonSlot)
@@ -86,6 +88,7 @@ class ButtonsGrid(QGridLayout):
                     button = Button(nextButtonText)
                     if not isNumOrDot(nextButtonText):
                         button.setProperty('cssClass', 'specialButton')
+                        self._configSpecialButton(button)
                     self.addWidget(button, i, 3, 1, 1)
                     buttonSlot = self._makeSlot(self._insertButtonTextToDisplay, button, )
                     self._connectButtonClicked(button, buttonSlot)
@@ -118,6 +121,12 @@ class ButtonsGrid(QGridLayout):
                             self._operatorClicked,
                             button
                     )
+            )
+
+        if text == '=':
+            self._connectButtonClicked(
+                    button,
+                    self._equal
             )
 
     def _makeSlot(self, func, *args, **kwargs):
@@ -162,5 +171,21 @@ class ButtonsGrid(QGridLayout):
 
         self.equation = f'{self._left} {self._op} ??'
 
-        print(buttonText)
+    def _equal(self):
+        displayText = self.display.text()
 
+        if not isValidNumber(displayText):
+            return
+
+        self._right = float(displayText)
+        self.equation = f'{self._left} {self._op} {self._right}'
+        result = 0.0
+        try:
+            result = eval(self.equation)
+        except ZeroDivisionError:
+            print('Zero Division Error')
+
+        self.display.clear()
+        self.info.setText(f'{self.equation} = {result}')
+        self._left = result
+        self._right = None
