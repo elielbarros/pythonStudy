@@ -65,6 +65,8 @@ class ButtonsGrid(QGridLayout):
         self.info.setText(value)
 
     def _makeGrid(self):
+        self.display.eqRequested.connect(lambda: print(123))
+
         for i, row in enumerate(self._gridMask):
             for j, buttonText in enumerate(row):
                 if buttonText == '0':
@@ -212,11 +214,11 @@ class ButtonsGrid(QGridLayout):
         msgBox = self._makeDialog(text)
         msgBox.setIcon(msgBox.Icon.Critical)
         msgBox.exec()
+
         # msgBox = self.window.makeMsgBox()
         # msgBox.setText(text)
         # msgBox.setInformativeText('Lorem ipsum dolor sit amet')
         # msgBox.setIcon(msgBox.Icon.Critical)
-        # msgBox.exec()
 
         # msgBox.setStandardButtons(
         #         msgBox.StandardButton.Ok | msgBox.StandardButton.Cancel
