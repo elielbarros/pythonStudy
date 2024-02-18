@@ -46,12 +46,12 @@ class ButtonsGrid(QGridLayout):
         self.info = info
         self.window = window
         self._equation = ''
-        self._equationInitialValue = 'Your Calculation'
+        self._equationInitialValue = 'Calculation result'
         self._left = None
         self._right = None
         self._op = None
 
-        self._equation = self._equationInitialValue
+        self.equation = self._equationInitialValue
 
         self._makeGrid()
 
@@ -181,6 +181,7 @@ class ButtonsGrid(QGridLayout):
         displayText = self.display.text()
 
         if not isValidNumber(displayText):
+            self._showError('You need type something.')
             return
 
         self._right = float(displayText)
@@ -198,9 +199,9 @@ class ButtonsGrid(QGridLayout):
             self.info.setText(f'{self.equation} = {result}')
             self._left = result
         except ZeroDivisionError:
-            print('Zero Division Error')
+            self._showError('You are trying to divide number by zero')
         except OverflowError:
-            print('Number is too big')
+            self._showError('This calculation cannot be performed')
             self.info.setText(f'{self.equation} = error')
             self._left = None
             self.display.clear()
@@ -208,7 +209,34 @@ class ButtonsGrid(QGridLayout):
             self._right = None
 
     def _showError(self, text):
-        msgBox = self.window.makeMsgBox()
-        msgBox.setText(text)
+        msgBox = self._makeDialog(text)
         msgBox.setIcon(msgBox.Icon.Critical)
         msgBox.exec()
+        # msgBox = self.window.makeMsgBox()
+        # msgBox.setText(text)
+        # msgBox.setInformativeText('Lorem ipsum dolor sit amet')
+        # msgBox.setIcon(msgBox.Icon.Critical)
+        # msgBox.exec()
+
+        # msgBox.setStandardButtons(
+        #         msgBox.StandardButton.Ok | msgBox.StandardButton.Cancel
+        # )
+
+        # msgBox.button(msgBox.StandardButton.Ok).setText('Agreed')
+
+        # result = msgBox.exec()
+
+        # if result == msgBox.StandardButton.Ok:
+        #     print('User clicked on the button "Ok"')
+        # if result == msgBox.StandardButton.Cancel:
+        #     print('User clicked on the button "Cancel"')
+
+    def _showInfo(self, text):
+        msgBox = self._makeDialog(text)
+        msgBox.setIcon(msgBox.Icon.Information)
+        msgBox.exec()
+
+    def _makeDialog(self, text):
+        msgBox = self.window.makeMsgBox()
+        msgBox.setText(text)
+        return msgBox
