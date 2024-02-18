@@ -5,10 +5,10 @@ from PySide6.QtWidgets import QApplication
 
 from buttons import ButtonsGrid
 from display import Display
+from info import Info
 from main_window import MainWindow
 from styles import setupTheme
 from variables import WINDOW_ICON_PATH
-from info import Info
 
 if __name__ == '__main__':
 
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     window.addToVLayout(display)
 
     # Create Grid
-    buttonsGrid = ButtonsGrid(display, info)
+    buttonsGrid = ButtonsGrid(display, info, window)
     window.verticalLayout.addLayout(buttonsGrid)
 
     window.adjustFixedSize()

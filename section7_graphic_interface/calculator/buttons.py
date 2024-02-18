@@ -7,6 +7,7 @@ from PySide6.QtWidgets import QPushButton, QGridLayout
 if TYPE_CHECKING:
     from info import Info
     from display import Display
+    from main_window import MainWindow
 from utils import isNumOrDot, isValidNumber
 from variables import MEDIUM_FONT_SIZE
 
@@ -31,7 +32,7 @@ class Button(QPushButton):
 
 
 class ButtonsGrid(QGridLayout):
-    def __init__(self, display: 'Display', info: 'Info', *args, **kwargs):
+    def __init__(self, display: 'Display', info: 'Info', window: 'MainWindow', *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._gridMask = [
             ['C', '◀', '^', '/'],
@@ -43,6 +44,7 @@ class ButtonsGrid(QGridLayout):
 
         self.display = display
         self.info = info
+        self.window = window
         self._equation = ''
         self._equationInitialValue = 'Your Calculation'
         self._left = None
@@ -165,7 +167,7 @@ class ButtonsGrid(QGridLayout):
         self.display.clear()
 
         if not isValidNumber(displayText) and self._left is None:
-            print('There is nothing for left value')
+            self._showError('You need type something.')
             return
 
         if self._left is None:
@@ -204,3 +206,9 @@ class ButtonsGrid(QGridLayout):
             self.display.clear()
         finally:
             self._right = None
+
+    def _showError(self, text):
+        msgBox = self.window.makeMsgBox()
+        msgBox.setText(text)
+        msgBox.setIcon(msgBox.Icon.Critical)
+        msgBox.exec()
