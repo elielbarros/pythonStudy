@@ -36,11 +36,11 @@ class Display(QLineEdit):
             self.eqPressed.emit()
             return event.ignore()
 
-        if isDelete:
+        if isDelete or text == 'd':
             self.delPressed.emit()
             return event.ignore()
 
-        if isEsc:
+        if isEsc or text == 'c':
             self.clearPressed.emit()
             return event.ignore()
 
