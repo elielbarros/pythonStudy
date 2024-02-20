@@ -64,10 +64,14 @@ class ButtonsGrid(QGridLayout):
         self._equation = value
         self.info.setText(value)
 
+    def _number(self, *args):
+        print(f'text: {args}')
+
     def _makeGrid(self):
         self.display.eqPressed.connect(lambda: print('Enter, return or equal'))
         self.display.delPressed.connect(self.display.backspace)
         self.display.clearPressed.connect(lambda: print('Escape'))
+        self.display.inputPressed.connect(self._number)
 
         for i, row in enumerate(self._gridMask):
             for j, buttonText in enumerate(row):
