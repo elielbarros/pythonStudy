@@ -69,7 +69,7 @@ class ButtonsGrid(QGridLayout):
 
     def _makeGrid(self):
         self.display.eqPressed.connect(self._equal)
-        self.display.delPressed.connect(self.display.backspace)
+        self.display.delPressed.connect(self._backspace)
         self.display.clearPressed.connect(self._clear)
         self.display.inputPressed.connect(self._insertButtonTextToDisplay)
         self.display.operatorPressed.connect(self._operatorClicked)
@@ -86,6 +86,11 @@ class ButtonsGrid(QGridLayout):
                 buttonSlot = self._makeSlot(self._insertButtonTextToDisplay, button.text(), )
                 self._connectButtonClicked(button, buttonSlot)
 
+    @Slot()
+    def _backspace(self):
+        self.display.backspace()
+        self.display.setFocus()
+
     def _connectButtonClicked(self, button, slot):
         button.clicked.connect(slot)
 
@@ -96,7 +101,7 @@ class ButtonsGrid(QGridLayout):
             self._connectButtonClicked(button, self._clear)
 
         if text == '◀':
-            self._connectButtonClicked(button, self.display.backspace)
+            self._connectButtonClicked(button, self._backspace)
 
         if text == 'N':
             self._connectButtonClicked(button, self._invertNumber)
@@ -151,9 +156,11 @@ class ButtonsGrid(QGridLayout):
         # print(newDisplayValue)
 
         if not isValidNumber(newDisplayValue):
+            self.display.setFocus()
             return
 
         self.display.insert(buttonText)
+        self.display.setFocus()
 
     @Slot()
     def _clear(self):
@@ -162,6 +169,7 @@ class ButtonsGrid(QGridLayout):
         self._op = None
         self.equation = self._equationInitialValue
         self.display.clear()
+        self.display.setFocus()
 
     @Slot()
     def _operatorClicked(self, buttonText):
@@ -170,6 +178,7 @@ class ButtonsGrid(QGridLayout):
 
         if not isValidNumber(displayText) and self._left is None:
             self._showError('You need type something.')
+            self.display.setFocus()
             return
 
         if self._left is None:
@@ -178,12 +187,13 @@ class ButtonsGrid(QGridLayout):
         self._op = buttonText
 
         self.equation = f'{self._left} {self._op} ??'
+        self.display.setFocus()
 
     @Slot()
     def _equal(self):
         displayText = self.display.text()
 
-        if not isValidNumber(displayText):
+        if not isValidNumber(displayText) or self._left is None:
             self._showError('You need type something.')
             return
 
@@ -192,9 +202,9 @@ class ButtonsGrid(QGridLayout):
 
         try:
             result = 0.0
-
-            if '^' in self.equation and isinstance(self._left, float):
-                result = math.pow(self._left, self._right)
+            isintOrFloat = isinstance(self._left, float) | isinstance(self._left, int)
+            if '^' in self.equation and isintOrFloat:
+                result = self._convertToNumber(math.pow(self._left, self._right))
             else:
                 result = eval(self.equation)
 
@@ -210,6 +220,7 @@ class ButtonsGrid(QGridLayout):
             self.display.clear()
         finally:
             self._right = None
+            self.display.setFocus()
 
     def _showError(self, text):
         msgBox = self._makeDialog(text)
