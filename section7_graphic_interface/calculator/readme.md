@@ -91,3 +91,8 @@
 ##### Use o arquivo spec para gerar o executável
 - Execute o comando:
 ```pyinstaller --distpath __localcode/dist --workpath __localcode/build __localcode/Calculadora.spec```
+
+#### QTDesigner
+- Como utilizar o QTDesigner?
+  - Acesse a pasta venv > lib > site-packages > PySide6
+  - Execute o comando: ./designer
