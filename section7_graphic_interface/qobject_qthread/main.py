@@ -32,28 +32,36 @@ class MyWidget(QWidget, Ui_myWidget):
         self._worker = Worker1()
         self._thread = QThread()
 
+        # Isso garante que o widget vai ter uma referência para worker e thread
         worker = self._worker
         thread: QObject = self._thread
 
-        # Mover o worker para a thread
+        # Worker é movido para a thread. Todas as funções e métodos do
+        # objeto de worker serão executados na thread criado pela QThread.
         worker.moveToThread(thread)
 
-        # Conectar o Run
+        # Quando uma QThread é iniciada, emite o sinal started automaticamente.
         thread.started.connect(worker.run)
 
-        # Quando a thread terminar a execucao, finalizar o trabalho
+        # O sinal finished é emitido pelo objeto worker quando o trabalho que
+        # ele está executando é concluído. Isso aciona o método quit da qthread
+        # que interrompe o loop de eventos dela.
         worker.finished.connect(thread.quit)
 
-        # Para que a Thread e o Worker sejam removidos da memoria
+        # deleteLater solicita a exclusão do objeto worker do sistema de
+        # gerenciamento de memória do Python. Quando o worker finaliza, ele
+        # emite um sinal finished que vai executar o método deleteLater.
+        # Isso garante que objetos sejam removidos da memória corretamente.
         thread.finished.connect(thread.deleteLater)
         worker.finished.connect(thread.deleteLater)
 
-        # Apos configurar worker e thread
-        # Configurar as acoes para cada estado do worker
+        # Aqui estão seus métodos e início, meio e fim
+        # execute o que quiser
         worker.started.connect(self._worker1Started)
         worker.progress.connect(self._worker1Progress)
         worker.finished.connect(self._worker1Finished)
 
+        # Inicie a thread
         thread.start()
 
     def _worker1Started(self, value):
@@ -78,21 +86,15 @@ class MyWidget(QWidget, Ui_myWidget):
         worker = self._worker2
         thread: QObject = self._thread2
 
-        # Mover o worker para a thread
         worker.moveToThread(thread)
 
-        # Conectar o Run
         thread.started.connect(worker.run)
 
-        # Quando a thread terminar a execucao, finalizar o trabalho
         worker.finished.connect(thread.quit)
 
-        # Para que a Thread e o Worker sejam removidos da memoria
         thread.finished.connect(thread.deleteLater)
         worker.finished.connect(thread.deleteLater)
 
-        # Apos configurar worker e thread
-        # Configurar as acoes para cada estado do worker
         worker.started.connect(self._worker2Started)
         worker.progress.connect(self._worker2Progress)
         worker.finished.connect(self._worker2Finished)
