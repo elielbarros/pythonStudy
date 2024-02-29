@@ -296,3 +296,4 @@ pyrightconfig.json
 /.idea/pythonStudy.iml
 /.idea/vcs.xml
 /.idea/inspectionProfiles/Project_Default.xml
+/section8_database_python/399_mysql_docker/mysql-server/
