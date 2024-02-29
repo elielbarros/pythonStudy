@@ -1,5 +1,7 @@
 services:
   mysql-server:
+    env_file:
+      - .env
     container_name: mysql-server
     hostname: mysql-server
     image: mysql:8
@@ -14,8 +16,4 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: senha
-      MYSQL_DATABASE: base_de_dados
-      MYSQL_USER: usuario
-      MYSQL_PASSWORD: senha
       TZ: America/Sao_Paulo
