@@ -14,3 +14,7 @@ Para acessar o banco com o DBeaver siga o passo a passo:
 - Em Main, General, Connect By: Host, clique em "Open..." e selecione o arquivo db.sqlite3 criado na aula.
 - Clique em "Test Connection" e faça o download dos drivers necessarios
 - Clique em "Finish"
+
+Para executar query usando o Python é necessário instalar a biblioteca pymysql
+- Execute o comando:
+- pip install pymysql
