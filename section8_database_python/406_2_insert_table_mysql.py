@@ -40,4 +40,11 @@ with connection:
         # Cleaning table using TRUNCATE
         query = f'TRUNCATE TABLE {TABLE_NAME}'
         cursor.execute(query)
-        connection.commit()  # Not necessary
+        connection.commit()
+
+        # Using cursor to insert into customers a customer
+        with connection.cursor() as cursor:
+            query = f"""INSERT INTO {TABLE_NAME} (name, age) VALUES ('John',64)"""
+            result = cursor.execute(query)
+            print(result)
+            connection.commit()
