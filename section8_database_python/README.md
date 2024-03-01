@@ -18,3 +18,5 @@ Para acessar o banco com o DBeaver siga o passo a passo:
 Para executar query usando o Python é necessário instalar a biblioteca pymysql
 - Execute o comando:
 - pip install pymysql
+- Execute o seguinte comando para instalar os "type"s do pymysql:
+- pip install types-pymysql
