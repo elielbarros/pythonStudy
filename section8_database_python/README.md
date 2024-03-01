@@ -20,3 +20,7 @@ Para executar query usando o Python é necessário instalar a biblioteca pymysql
 - pip install pymysql
 - Execute o seguinte comando para instalar os "type"s do pymysql:
 - pip install types-pymysql
+
+Use python-dotenv para conectar com MySQL
+- Execute o comando para instalar:
+- pip install python-dotenv
